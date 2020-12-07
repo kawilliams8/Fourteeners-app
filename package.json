@@ -1,13 +1,21 @@
 {
   "name": "fourteeners-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fourteeners App",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
   },
-  "keywords": [],
-  "author": "",
+  "scripts": {
+    "start": "webpack-dev-server --open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create": "webpack"
+  },
+  "keywords": [Colorado, Fourteeners, Mountains],
+  "author": "Katherine A Williams",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.12.9",
