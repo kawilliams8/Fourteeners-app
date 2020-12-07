@@ -14,7 +14,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "create": "webpack"
   },
-  "keywords": ["Colorado", "Fourteeners", "Mountains"],
+  "keywords": [
+    "Colorado",
+    "Fourteeners",
+    "Mountains"
+  ],
   "author": "Katherine A Williams",
   "license": "ISC",
   "devDependencies": {
@@ -28,5 +32,9 @@
     "webpack": "^5.10.0",
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   }
 }
