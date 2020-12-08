@@ -1,4 +1,4 @@
-import { getPeaks } from "./apiCalls";
+import { getPeaks, deletePeak } from "./apiCalls";
 
 describe("getPeaks", () => {
   let mockPeak;
@@ -79,5 +79,46 @@ describe("getPeaks", () => {
     });
 
     expect(getPeaks()).rejects.toEqual(Error("Fetching Error"));
+  });
+});
+
+describe("deletePeaks", () => {
+  let mockPeakId;
+  beforeEach(() => {
+    mockPeakId = 1;
+
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve(mockPeakId),
+      });
+    });
+  });
+
+  it("should call fetch with the correct URL", () => {
+    deletePeak(mockPeakId);
+    expect(window.fetch).toHaveBeenCalledWith(
+      "https://fourteeners-api.herokuapp.com/api/v1/peaks/1"
+    );
+  });
+
+  it("should show an error when the fetch Promise returns rejected -- ok: false", () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: false,
+      });
+    });
+
+    expect(deletePeak()).rejects.toEqual(Error("Fetching Error"));
+  });
+
+  it("should show an error when the fetch Promise returns rejected -- message: 'Fetching Error'", () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        message: "Fetching Error",
+      });
+    });
+
+    expect(deletePeak()).rejects.toEqual(Error("Fetching Error"));
   });
 });
