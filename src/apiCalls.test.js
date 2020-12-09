@@ -188,6 +188,17 @@ describe("deletePeaks", () => {
     );
   });
 
+  it("should return a status 204 for a mocked successful delete", async () => {
+    window.fetch = jest.fn().mockImplementation(() => {
+      return Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({status: 204}),
+      });
+    });
+    let response = await deletePeak(1);
+    expect(response.status).toEqual(204);
+  });
+
   it("should show an error when the fetch Promise returns rejected -- ok: false", () => {
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
