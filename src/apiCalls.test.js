@@ -183,7 +183,8 @@ describe("deletePeaks", () => {
   it("should call fetch with the correct URL", () => {
     deletePeak(mockPeakId);
     expect(window.fetch).toHaveBeenCalledWith(
-      "https://fourteeners-api.herokuapp.com/api/v1/peaks/1"
+      "https://fourteeners-api.herokuapp.com/api/v1/peaks/1",
+      {"method": "DELETE"}
     );
   });
 

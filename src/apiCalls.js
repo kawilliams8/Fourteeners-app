@@ -25,7 +25,10 @@ export const getPeak = (id) => {
 };
 
 export const deletePeak = (id) => {
-  return fetch(`https://fourteeners-api.herokuapp.com/api/v1/peaks/${id}`)
+  let options = {
+    method: 'DELETE'
+  };
+  return fetch(`https://fourteeners-api.herokuapp.com/api/v1/peaks/${id}`, options)
     .then((response) => {
       if (!response.ok) {
         throw Error("Fetching Error");
